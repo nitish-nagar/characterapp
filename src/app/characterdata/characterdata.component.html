@@ -1,0 +1,46 @@
+<div class="background-image">
+    <div class="form-container">
+        <h3 style="color: rgb(245, 105, 7);">Dragon Ball Character App</h3>
+        <div class="form-fields">
+            <p-floatLabel>
+                <input pInputText type="text" class="p-inputtext-md" [(ngModel)]="name" />
+                <label for="name">Name</label>
+            </p-floatLabel>
+            <p-floatLabel>
+                <input pInputText type="text" class="p-inputtext-md" [(ngModel)]="species" />
+                <label for="species">Species</label>
+            </p-floatLabel>
+            <p-floatLabel>
+                <p-dropdown [options]="genderList" [(ngModel)]="gender" optionLabel="label" [showClear]="true" value="gender" placeholder="Select Gender" (onChange)="handleGenderSelection($event)"></p-dropdown>
+                <label for="gender">Gender</label>
+            </p-floatLabel>
+            <p-floatLabel>
+                <input pInputText type="text" class="p-inputtext-md" [(ngModel)]="alias" />
+                <label for="alias">Alias</label>
+            </p-floatLabel>
+            <p-button label="Save Character" [raised]="true" severity="warning" (click)="saveCharacter()"></p-button>
+        </div>
+    </div>
+    <div class="table-container">
+        <p-table [value]="characters" [paginator]="true" [rows]="3" [showCurrentPageReport]="true"
+            [tableStyle]="{ 'min-width': '50rem' }"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:25%; color: rgb(245, 105, 7);">Name</th>
+                    <th style="width:25%; color: rgb(245, 105, 7);">Species</th>
+                    <th style="width:25%; color: rgb(245, 105, 7);">Gender</th>
+                    <th style="width:25%; color: rgb(245, 105, 7);">Alias</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-characters>
+                <tr>
+                    <td>{{ characters.name }}</td>
+                    <td>{{ characters.species }}</td>
+                    <td>{{ characters.gender }}</td>
+                    <td>{{ characters.alias }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
